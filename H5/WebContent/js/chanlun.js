@@ -1,9 +1,28 @@
 (function() {
-	draw('code', 'myChart');
+	// draw('code');
+	$('#formSearch').click(downDate);
 })()
-
+function downDate(){
+	var code = $('#code').val();
+	draw(code)
+}
 function draw(code) {
-
+	if(code.length>6|| code.length<6){
+		
+		alert("股票代码至少有6位");
+		return;
+	}
+	
+	var codepre = '';
+	
+	if(code.substring(0,1)=='3'){
+		alert("暂时不支持以3开头创业板");
+		return;
+	}else if(code.substring(0,1)=='6'){
+		codepre = 'java.sh.';
+	}else{
+		codepre = 'java.sz.';
+	}
 	$.post("http://127.0.0.1:8080/finance/getData", {
 		"code": 'java.sh.600061'
 	}, function(result) {

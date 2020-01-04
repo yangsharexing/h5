@@ -5,7 +5,7 @@
 function draw(code) {
 
 	$.post("http://127.0.0.1:8080/finance/getMyData", {
-		"code": 'day.java.sh.603500'
+		"code": 'day.java.sh.603012'
 	}, function(result) {
 		console.log(result)
 		show('myChart', result.list_0, result.list_1, "价*换手");
